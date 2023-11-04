@@ -1,0 +1,15 @@
+{
+  "name": "server",
+  "module": "index.js",
+  "type": "module",
+  "dependencies": {
+    "client": "workspace:*"
+  },
+  "trustedDependencies": ["couchbase"],
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

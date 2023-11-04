@@ -1,0 +1,13 @@
+{
+  "name": "my-fullstack-app",
+  "module": "index.ts",
+  "type": "module",
+  "version": "1.0.0",
+  "workspaces": ["packages/*"],
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
