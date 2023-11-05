@@ -1,8 +1,12 @@
 # my-fullstack-app
 
-Bun + ElysiaJS + Svelte + TailWindCSS  -> Application
+Bun + ElysiaJS + Svelte + TailWindCSS  -> Full Stack Application
 
-Couchbase + Elastic
+Bun + ELysiaJS (Backend)
+Svelte + TailWindCSS (Frontend)
+
+Couchbase + Elastic -> Data & Monitoring
+
 
 To install dependencies:
 
