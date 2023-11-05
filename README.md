@@ -1,5 +1,9 @@
 # my-fullstack-app
 
+Bun + ElysiaJS + Svelte + TailWindCSS  -> Application
+
+Couchbase + Elastic
+
 To install dependencies:
 
 ```bash
