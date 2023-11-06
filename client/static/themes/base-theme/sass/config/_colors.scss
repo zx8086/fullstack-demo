@@ -1,0 +1,57 @@
+
+/**
+These are all the colors that can be used in the application.
+
+Make sure to add '!default' at the end of a color so it doesn't matter if a color is redefined in a theme or not.
+@see: https://anotheruiguy.gitbooks.io/sassintherealworld_book-i/handy-tools/default-flag.html
+ */
+
+// Color palette
+
+$color-white:                   #ffffff !default;
+$color-offwhite:                #fbf9f9 !default;
+$color-gray-lightest:           $color-offwhite !default;
+$color-gray-lighter:            #ededed !default;
+$color-gray-light:              #e5e3e3 !default;
+$color-gray-mid:                #d1d0d0 !default;
+$color-gray-dark:               #a3a2a2 !default;
+$color-gray-darker:             #636363 !default;
+$color-gray-darkest:            #323232 !default;
+$color-black:                   #000000 !default;
+
+
+// Brand colors
+
+$color-brand-red:               #be2428 !default; // Official brand color
+
+$color-brand-blue:              #1d305d !default; // Official brand color
+$color-brand-blue-light:        #4e5c80 !default;
+$color-brand-blue-lighter:      #8e97ae !default;
+
+$color-brand-green:             #0faf6d !default; // Official brand color
+$color-brand-green-light:       #84d7b5 !default;
+
+
+// Application-wide colors
+
+$color-brand-1:                 $color-brand-red !default;
+
+$color-brand-2-lighter:         $color-brand-blue-lighter !default;
+$color-brand-2-light:           $color-brand-blue-light !default;
+$color-brand-2:                 black !default;
+
+$color-brand-3-light:           $color-brand-green-light !default;
+$color-brand-3:                 $color-brand-green !default;
+
+$color-background:              $color-gray-lightest !default;
+
+$color-error:                   $color-brand-red !default;
+$color-success:                 $color-brand-green !default;
+$color-active:                  $color-brand-red !default;
+
+
+// App specific colors
+
+$color-graph-1:                 #ef4f4f;
+$color-graph-2:                 #ddf543;
+$color-graph-3:                 #46cda5;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>dropdown</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Final-Designs" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="05.3-STYLE-DETAIL-REPORT---SEARCH" transform="translate(-319.000000, -131.000000)" fill="#1D2F5E">
+            <g id="OPTIONS-BAR" transform="translate(0.000000, 96.000000)">
+                <g id="FILTER" transform="translate(63.000000, 22.000000)">
+                    <path d="M259.109938,19.9837099 C258.697358,20.3447179 258.362895,20.1817082 258.362895,19.641975 L258.362895,11.6327702 C258.362895,11.0830273 258.703237,10.9351717 259.109938,11.2910353 L263.330138,14.9837099 C263.742719,15.3447179 263.736839,15.9351717 263.330138,16.2910353 L259.109938,19.9837099 Z" id="dropdown" transform="translate(261.000134, 15.637239) rotate(-270.000000) translate(-261.000134, -15.637239) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

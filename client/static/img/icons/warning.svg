@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="28px" height="24px" viewBox="0 0 28 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>warning</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Final-Designs" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="04.1-LOOKS-REPORT" transform="translate(-102.000000, -869.000000)">
+            <g id="MAIN-REPORT" transform="translate(62.000000, 327.000000)">
+                <g id="alert" transform="translate(41.000000, 543.000000)">
+                    <g id="warning">
+                        <path d="M11.9248871,1.48070611 C12.3547612,0.796557481 13.3515824,0.796557481 13.7814564,1.48070611 L25.4809252,20.1161523 C25.9391871,20.8461271 25.4144164,21.7946889 24.5526405,21.7946889 L1.15370304,21.7946889 C0.291927201,21.7946889 -0.23284359,20.8461271 0.225418384,20.1161523 L11.9248871,1.48070611 Z" id="Page-1" stroke="#FF0000" stroke-width="2"></path>
+                        <path d="M12,15.657 L13.742,15.657 L13.742,17.282 L12,17.282 L12,15.657 Z M12.065,8 L13.69,8 L13.69,10.678 L13.261,14.695 L12.494,14.695 L12.065,10.678 L12.065,8 Z" id="!" fill="#FF0000"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

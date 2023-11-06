@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style>.cls-1{fill-rule:evenodd;}</style>
+  </defs>
+  <title>MOVE</title>
+  <g id="MOVE">
+    <path class="cls-1" d="M11,8.5v-4l7,7-7,7V14.4c-5,0-8.5,1.6-11,5.1C1,14.5,4,9.5,11,8.5Zm6-1v-3l7,7-7,7v-3l4-4Z"/>
+  </g>
+</svg>

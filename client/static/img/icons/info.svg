@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>INFO</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="12" cy="12" r="12"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="24" height="24" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Final-Designs" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01.-HOME-DASHBOARD" transform="translate(-976.000000, -18.000000)">
+            <g id="PAGE-HEADER" transform="translate(-6.000000, 18.000000)">
+                <g id="UPDATE" transform="translate(687.000000, 0.000000)">
+                    <g id="INFO" transform="translate(295.000000, 0.000000)">
+                        <path d="M12.0175695,7 C12.2957554,7 12.5348941,7.1000478 12.7349927,7.30014641 C12.9350913,7.50024502 13.0351391,7.73938367 13.0351391,8.01756955 C13.0351391,8.28599451 12.9363114,8.52391307 12.738653,8.73133236 C12.5409946,8.93875165 12.3006359,9.04245974 12.0175695,9.04245974 C11.7442641,9.04245974 11.5063456,8.93875165 11.3038067,8.73133236 C11.1012679,8.52391307 11,8.28599451 11,8.01756955 C11,7.73450322 11.102488,7.49414447 11.3074671,7.29648609 C11.5124461,7.09882771 11.7491446,7 12.0175695,7 L12.0175695,7 Z M12.9180088,10.1625183 L12.9180088,17 L11.1171303,17 L11.1171303,10.1625183 L12.9180088,10.1625183 Z" id="i" fill="#1D2F5E"></path>
+                        <use id="Oval-3" stroke="#1D2F5E" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

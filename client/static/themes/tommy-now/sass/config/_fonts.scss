@@ -1,0 +1,56 @@
+
+$theme-fonts: (
+
+  // Group 1
+  'group-1-light': (
+    src: '../../tommy-now/fonts/Futura-Light.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 1px,
+      line-height: 20px,
+      size: 14px,
+      text-transform: uppercase
+    )
+  ),
+  'group-1-book': (
+    src: '../../tommy-now/fonts/Futura-Book.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 1px,
+      line-height: 20px,
+      size: 14px,
+      text-transform: uppercase
+    )
+  ),
+  'group-1-roman': (
+    src: '../../tommy-now/fonts/Futura-Medium.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 1px,
+      line-height: 20px,
+      size: 14px,
+      text-transform: uppercase
+    )
+  ),
+  'group-1-semi-bold': ( // DONT USE, USE BOLD VARIANT
+    src: '../../tommy-now/fonts/Futura-Demi.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 1px,
+      line-height: 20px,
+      size: 14px,
+      text-transform: uppercase
+    )
+  ),
+  'group-1-bold': (
+    src: '../../tommy-now/fonts/Futura-Demi.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 1px,
+      line-height: 20px,
+      size: 14px,
+      text-transform: uppercase
+    )
+  ),
+
+);

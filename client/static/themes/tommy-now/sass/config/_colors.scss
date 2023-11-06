@@ -1,0 +1,30 @@
+
+/**
+Only redefine color variables from the base theme.
+New colors or brand colors should be added in the base theme, not here.
+ */
+
+// Color palette
+
+$color-offwhite:        #f7f4f4;
+$color-gray-lightest:   $color-offwhite;
+$color-gray-light:      #e3e3e3;
+$color-gray-dark:       #979797;
+
+
+// Brand colors
+
+$color-brand-red:       #c8102e;
+$color-brand-blue:      #041e42;
+$color-brand-green:     #0faf6d;
+
+
+// Application-wide colors
+
+$color-brand-1:         $color-brand-red;
+
+$color-brand-2:         black;
+$color-brand-2-light:   lighten($color-brand-2, 30%);
+$color-brand-2-lighter: lighten($color-brand-2, 60%);
+
+$color-background:      $color-gray-lightest;

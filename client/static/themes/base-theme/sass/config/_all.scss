@@ -1,0 +1,11 @@
+
+// The necessary configs
+@import "colors";
+@import "fonts";
+@import "paths";
+
+// The necessary parts
+@import "../../../_shared/sass/fonts";
+@import "../../../_shared/sass/svg-icons";
+
+@include set-and-load-all-fonts();

@@ -1,0 +1,83 @@
+$svg-icons__highlight-1: $color-brand-1;
+$svg-icons__highlight-3: $color-brand-3;
+
+/*
+SVG ICONS
+---------
+*/
+
+/** This should be possible too: background-image: url(directory/path-to-svg-sprite.svg#arrow-right); */
+
+.svg-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+
+    * {
+        fill: $color-brand-2;
+    }
+
+    &.-s16 {
+        width: 16px;
+        height: 16px;
+    }
+
+    &.-white {
+        * {
+            fill: $color-white;
+        }
+    }
+
+
+    &.-highlight-1 * {
+        fill: $svg-icons__highlight-1;
+    }
+
+    &.-highlight-3 * {
+        fill: $svg-icons__highlight-3;
+    }
+
+    &.-active {
+        * {
+            fill: $color-brand-1;
+        }
+    }
+
+    &.-success {
+        * {
+            fill: $color-success;
+        }
+    }
+
+    &.-centered {
+        margin-bottom: 0.3em;
+        vertical-align: middle;
+    }
+
+    &.-animate,
+    &.-animate * {
+        transition: 0.4s ease all;
+    }
+
+    &.-rotate-90 {
+        transform: rotate(90deg);
+    }
+
+    &.-rotate-180 {
+        transform: rotate(180deg);
+    }
+
+    &.-rotate-90ccw {
+        transform: rotate(-90deg);
+    }
+
+    &.-rotate-180ccw {
+        transform: rotate(-180deg);
+    }
+
+    &.-rotate-180x {
+        transform: rotateX(180deg);
+    }
+
+}

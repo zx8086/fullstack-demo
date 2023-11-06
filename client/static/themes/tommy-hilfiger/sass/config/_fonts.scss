@@ -1,0 +1,112 @@
+
+$theme-fonts: (
+
+  // Group 1
+  'group-1-light': (
+    src: '../../tommy-hilfiger/fonts/Gill-Sans-W04-Light.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 0.1em,
+      line-height: 20px,
+      size: 14px,
+      text-transform: none
+    )
+  ),
+  'group-1-book': (
+    src: '../../tommy-hilfiger/fonts/Gill-Sans-W04-Book.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 0.1em,
+      line-height: 20px,
+      size: 14px,
+      text-transform: none
+    )
+  ),
+  'group-1-roman': (
+    src: '../../tommy-hilfiger/fonts/Gill-Sans-W04-Roman.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 0.1em,
+      line-height: 20px,
+      size: 14px,
+      text-transform: none
+    )
+  ),
+  'group-1-semi-bold': (
+    src: '../../tommy-hilfiger/fonts/Gill-Sans-Semi-Bold.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 0.1em,
+      line-height: 20px,
+      size: 14px,
+      text-transform: none
+    )
+  ),
+  'group-1-bold': (
+    src: '../../tommy-hilfiger/fonts/Gill-Sans-W04-Bold.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 0.1em,
+      line-height: 20px,
+      size: 14px,
+      text-transform: uppercase
+    )
+  ),
+
+
+  // Group 2
+  'group-2-roman': (
+    src: '../../tommy-hilfiger/fonts/Caslon-540-LT-W01-Roman.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 0,
+      line-height: 20px,
+      size: 14px,
+      text-transform: none
+    )
+  ),
+  'group-2-italic': (
+    src: '../../tommy-hilfiger/fonts/Caslon-540-LT-W01-Italic.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 0,
+      line-height: 20px,
+      size: 14px,
+      text-transform: none
+    )
+  ),
+
+
+  // Group 3
+  'group-3-book': (
+    src: '../../tommy-hilfiger/fonts/heroiccondensed-book-webfont.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 0.1em,
+      line-height: 20px,
+      size: 14px,
+      text-transform: none
+    )
+  ),
+  'group-3-medium': (
+    src: '../../tommy-hilfiger/fonts/heroiccondensed-medium-webfont.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 0.1em,
+      line-height: 20px,
+      size: 14px,
+      text-transform: none
+    )
+  ),
+  'group-3-bold': (
+    src: '../../tommy-hilfiger/fonts/heroiccondensed-mediumoblique-webfont.woff',
+    defaults: (
+      color: inherit,
+      letter-spacing: 0.1em,
+      line-height: 20px,
+      size: 14px,
+      text-transform: none
+    )
+  )
+
+);

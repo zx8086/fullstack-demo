@@ -1,0 +1,83 @@
+
+/*
+FONT LOADING AND USAGE
+----------------------
+*/
+
+$merged-fonts: ();
+
+/*
+This merges multi-dimensional Sass maps properly, unlike the native map-merge function
+@see: https://medium.com/@pentzzsolt/a-non-destructive-map-merge-function-for-sass-f91637f87b2e
+ */
+@function non-destructive-map-merge($parent-map, $child-map) {
+
+  $result: $parent-map;
+
+  @each $key, $value in $child-map {
+
+    @if (not map-has-key($result, $key)) or (type-of(map-get($result, $key)) != type-of($value)) or (not (type-of(map-get($result, $key)) == map and type-of($value) == map)) {
+
+      $result: map-merge($result, ($key: $value));
+
+    } @else {
+
+      $result: map-merge($result, ($key: non-destructive-map-merge(map-get($result, $key), $value)));
+
+    }
+
+  }
+
+  @return $result;
+
+}
+
+/*
+This prevents the compiler from throwing an error if the theme fonts map isn't defined
+@see: https://anotheruiguy.gitbooks.io/sassintherealworld_book-i/handy-tools/default-flag.html
+ */
+$theme-fonts: () !default;
+
+@mixin set-and-load-all-fonts() {
+
+  $merged-fonts: non-destructive-map-merge($all-fonts, $theme-fonts) !global; // Set the global flag so the variable will be updated in the global scope
+
+  // Load all fonts
+  @each $font-name, $font in ($merged-fonts) {
+
+    @font-face {
+      font-family: $font-name;
+      src: url('#{map-get($font, src)}') format('woff');
+    }
+
+  }
+
+}
+
+/*
+Utility mixin for using a font with optional default properties
+ */
+@mixin font($font-name, $color: null, $size: null, $line-height: null, $letter-spacing: 1px, $text-transform: null, $font-smoothing: auto ) {
+
+  $font: map-get($merged-fonts, $font-name);
+  $font-defaults: map-get($font, defaults);
+
+  // Use the font defaults if the properties aren't provided
+  @if ($color == null)            { $color: map-get($font-defaults, color); }
+  @if ($letter-spacing == null)   { $letter-spacing: map-get($font-defaults, letter-spacing); }
+  @if ($line-height == null)      { $line-height: map-get($font-defaults, line-height); }
+  @if ($size == null)             { $size: map-get($font-defaults, size); }
+  @if ($text-transform == null)   { $text-transform: map-get($font-defaults, text-transform); }
+
+  color: $color;
+  font-family: $font-name;
+  font-weight: normal;
+  font-size: $size;
+  -webkit-font-smoothing: $font-smoothing;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba($color-black, 0.01);
+  text-transform: $text-transform;
+
+}

@@ -1,0 +1,114 @@
+//@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=5e82a781-e30e-43e1-9b9e-10927a71b376");
+
+/*
+ALL FONTS CONFIG
+----------------
+Adding a font (group)?
+- Add the font to the $all-fonts map
+- Create a mixin at the bottom of this file
+ */
+
+$all-fonts: (
+
+  // Group 1
+  'group-1-light': (
+    src: '../../tommy-hilfiger/fonts/Gill-Sans-W04-Light.woff',
+    defaults: (
+      /*
+      color: inherit,
+      letter-spacing: 0,
+      line-height: 20px,
+      size: 14px,
+      text-transform: none
+      */
+    )
+  ),
+  'group-1-book': (
+    src: '../../tommy-hilfiger/fonts/Gill-Sans-W04-Book.woff',
+    defaults: ()
+  ),
+  'group-1-roman': (
+    src: '../../tommy-hilfiger/fonts/Gill-Sans-W04-Roman.woff',
+    defaults: ()
+  ),
+  'group-1-semi-bold': (
+    src: '../../tommy-hilfiger/fonts/Gill-Sans-Semi-Bold.woff',
+    defaults: ()
+  ),
+  'group-1-bold': (
+    src: '../../tommy-hilfiger/fonts/Gill-Sans-W04-Bold.woff',
+    defaults: ()
+  ),
+
+
+  // Group 2
+  'group-2-roman': (
+    src: '../../tommy-hilfiger/fonts/Caslon-540-LT-W01-Roman.woff',
+    defaults: ()
+  ),
+  'group-2-italic': (
+    src: '../../tommy-hilfiger/fonts/Caslon-540-LT-W01-Italic.woff',
+    defaults: ()
+  ),
+
+
+  // Group 3
+  'group-3-book': (
+    src: '../../tommy-hilfiger/fonts/heroiccondensed-book-webfont.woff',
+    defaults: ()
+  ),
+  'group-3-medium': (
+    src: '../../tommy-hilfiger/fonts/heroiccondensed-medium-webfont.woff',
+    defaults: ()
+  ),
+  'group-3-bold': (
+    src: '../../tommy-hilfiger/fonts/heroiccondensed-mediumoblique-webfont.woff',
+    defaults: ()
+  )
+
+);
+
+
+
+/*
+ALL FONTS MIXINS
+----------------
+Mixins for consistent and easy usage of fonts and for easy refactoring. Dynamic mixins don't exist (yet).
+@see: https://github.com/sass/sass/issues/857
+*/
+
+// Group 1
+@mixin font-group-1-light($properties...) {
+  @include font('group-1-light', $properties...);
+}
+@mixin font-group-1-book($properties...) {
+  @include font('group-1-book', $properties...);
+}
+@mixin font-group-1-roman($properties...) {
+  @include font('group-1-roman', $properties...);
+}
+@mixin font-group-1-semi-bold($properties...) {
+  @include font('group-1-semi-bold', $font-smoothing: antialiased, $properties...);
+}
+@mixin font-group-1-bold($properties...) {
+  @include font('group-1-bold', $font-smoothing: antialiased, $properties...);
+}
+
+// Group 2
+@mixin font-group-2-roman($properties...) {
+  @include font('group-2-roman', $properties...);
+}
+@mixin font-group-2-italic($properties...) {
+  @include font('group-2-italic', $properties...);
+}
+
+// Group 3
+@mixin font-group-3-book($properties...) {
+  @include font('group-3-book', $properties...);
+}
+@mixin font-group-3-medium($properties...) {
+  @include font('group-3-medium', $properties...);
+}
+@mixin font-group-3-bold($properties...) {
+  @include font('group-3-bold', $properties...);
+}
