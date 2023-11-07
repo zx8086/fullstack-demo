@@ -1,22 +1,28 @@
 <script lang="ts">
-  
   import "../app.css";
-  import Division from '../components/Division.svelte'; // Assuming Division.svelte is in the same directory
-
   import { onMount } from 'svelte';
+  import { writable } from 'svelte/store';
   import { Sidebar } from 'svelte-sidebar-menu';
 
   type MenuItem = {
     href: string;
-    Division?: string;
+    Div: string;
     name: string;
     img?: string;
   };
 
   let brand = 'TH';
-  let menuList: MenuItem[] = [];
+  let menuList: MenuItem[] = []; 
+  let lorem ="Lorem ipsum dolor sit amet consectetur adipisicing elit.";
+  let siteName = "Home";
+  let headerClass = "bg-pink-700 py-3 px-10 items-center text-white border-b-2";
+  let asideClass = "absolute w-auto h-full bg-red-50 pt-8 border-r-2 shadow-lg";
+  let navClass = "p-7 text-base";
+  let selectedDivision: MenuItem | null = null;
+  const currentContent = writable("This is the initial content for the 'Home' area");
 
   onMount(() => {
+
     if (typeof window !== 'undefined') {
       const script = document.createElement('script');
       script.src = "/elastic-apm-rum.umd.js";
@@ -46,51 +52,41 @@
       };
       document.head.appendChild(script);
     }
-  });
 
-      if (brand === 'TH') {
+    if (brand === 'TH') {
         menuList = [
-          { href: "/", Division: "01", name: "TH Menswear", img: "../static/img/divisions/msw.jpg" },
-          { href: "/", Division: "02", name: "Tommy Jeans", img: "../static/img/divisions/dnm.jpg" },
-          { href: "/", Division: "03", name: "TH Licensing", img: "../static/img/divisions/licensing.jpg"},
-          { href: "/", Division: "04", name: "TH Kids",img: "../static/img/divisions/kids.jpg" },
-          { href: "/", Division: "05", name: "TH Womenswear", img: "../static/img/divisions/wsw.jpg" },
-          { href: "/", Division: "07", name: "TH Bodywear", img: "../static/img/divisions/bdw.jpg" },
-          { href: "/", Division: "08", name: "Tommy Sport", img: "../static/img/divisions/sports.jpg"},
-          { href: "/", Division: "09", name: "TH Footwear", img: "../static/img/divisions/ftw.jpg" },
-          { href: "/", Division: "10", name: "TH Accessories", img: "../static/img/divisions/acc.jpg" },
-          { href: "/", Division: "11", name: "TH Tailored", img: "../static/img/divisions/tail.jpg" },
-          { href: "/", Division: "18", name: "TH Collections", img: "../static/img/divisions/col.jpg" },
+          { href: "/01", Div: "01", name: "TH Menswear", img: "../static/img/divisions/msw.jpg" },
+          { href: "/02", Div: "02", name: "Tommy Jeans", img: "../static/img/divisions/dnm.jpg" },
+          { href: "/03", Div: "03", name: "TH Licensing", img: "../static/img/divisions/licensing.jpg"},
+          { href: "/04", Div: "04", name: "TH Kids",img: "../static/img/divisions/kids.jpg" },
+          { href: "/05", Div: "05", name: "TH Womenswear", img: "../static/img/divisions/wsw.jpg" },
+          { href: "/07", Div: "07", name: "TH Bodywear", img: "../static/img/divisions/bdw.jpg" },
+          { href: "/08", Div: "08", name: "Tommy Sport", img: "../static/img/divisions/sports.jpg"},
+          { href: "/09", Div: "09", name: "TH Footwear", img: "../static/img/divisions/ftw.jpg" },
+          { href: "/10", Div: "10", name: "TH Accessories", img: "../static/img/divisions/acc.jpg" },
+          { href: "/11", Div: "11", name: "TH Tailored", img: "../static/img/divisions/tail.jpg" },
+          { href: "/18", Div: "18", name: "TH Collections", img: "../static/img/divisions/col.jpg" },
         ];
       } else if (brand === 'CK') {
         menuList = [
-          { href: "61", name: "CK Menswear", img: "../static/img/divisions/msw.jpg" },
-          { href: "62", name: "CK Jeans", img: "../static/img/divisions/dnm.jpg" },
-          { href: "64", name: "CKJ KIDS", img: "../static/img/divisions/kids.jpg" },
-          { href: "65", name: "CK Womenswear", img: "../static/img/divisions/ckwsw.jpg" },
-          { href: "67", name: "CK Underwear", img: "../static/img/divisions/bdw.jpg" },
-          { href: "68", name: "CK Tailored", img: "../static/img/divisions/tail.jpg" },
-          { href: "69", name: "CK Footwear", img: "../static/img/divisions/ckftw.jpg" },
-          { href: "70", name: "CK Accessories", img: "../static/img/divisions/acc.jpg" },
-          { href: "77", name: "CK Swimwear", img: "../static/img/divisions/swm.jpg" },
+          { href: "/61", Div: "61", name: "CK Menswear", img: "../static/img/divisions/msw.jpg" },
+          { href: "/62", Div: "62", name: "CK Jeans", img: "../static/img/divisions/dnm.jpg" },
+          { href: "/64", Div: "64", name: "CKJ KIDS", img: "../static/img/divisions/kids.jpg" },
+          { href: "/65", Div: "65", name: "CK Womenswear", img: "../static/img/divisions/ckwsw.jpg" },
+          { href: "/67", Div: "67", name: "CK Underwear", img: "../static/img/divisions/bdw.jpg" },
+          { href: "/68", Div: "68", name: "CK Tailored", img: "../static/img/divisions/tail.jpg" },
+          { href: "/69", Div: "69", name: "CK Footwear", img: "../static/img/divisions/ckftw.jpg" },
+          { href: "/70", Div: "70", name: "CK Accessories", img: "../static/img/divisions/acc.jpg" },
+          { href: "/77", Div: "77", name: "CK Swimwear", img: "../static/img/divisions/swm.jpg" },
         ];
       } else if (brand === 'NIKE') {
         menuList = [
-          { href: "97", name: "Nike Underwear", img: "../static/img/divisions/nike.jpg" },
+          { href: "/97", Div: "97", name: "Nike Underwear", img: "../static/img/divisions/nike.jpg" },
         ];
       } else {
         menuList = [];
       }
-
-  let lists = menuList;
-
-  console.log("lists", lists);
-
-  let lorem ="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-  let siteName = "Home";
-  let headerClass = "bg-pink-700 py-3 px-10 items-center text-white border-b-2";
-  let asideClass = "absolute w-auto h-full bg-red-50 pt-8 border-r-2 shadow-lg";
-  let navClass = "p-5 text-base";
+  });
 
 </script>
 
@@ -103,13 +99,6 @@
 />
 <main class="container mx-auto p-24">
   <h1 class="text-3xl">
-    {siteName}
+    <slot></slot>
   </h1>
-  <p class="pt-4">
-   <!-- <Division {menuList} /> -->
-  </p>
 </main>
-
-
-
-
