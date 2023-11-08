@@ -6,7 +6,7 @@
   import { Sidebar } from 'svelte-sidebar-menu';
 
   let siteName = "Home";
-  let headerClass = "bg-white py-3 px-10 items-center text-black border-b-2";
+  let headerClass = "bg-white py-3 px-10 items-center text-black py-4 border-b-2";
   let asideClass = "absolute w-auto h-full bg-white pt-8 border-r-2 shadow-lg";
   let navClass = "bg-white p-7 text-base";
 
@@ -61,5 +61,3 @@
     <slot></slot>
   </h1>
 </main>
-
-<!-- You can change the style by setting headClass, hamburgerClass, asideClass, navClass, sideBarListClass and navDivClass variables using Tailwind CSS. -->
