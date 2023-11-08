@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.theme-th {
+    @apply bg-red-100 text-red-700;
+    /* Define other TH-specific styles here */
+  }
+  
+  .theme-ck {
+    @apply bg-blue-100 text-blue-700;
+    /* Define other CK-specific styles here */
+  }
+  
+  .theme-nike {
+    @apply bg-green-100 text-green-700;
+    /* Define other Nike-specific styles here */
+  }
+  

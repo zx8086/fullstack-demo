@@ -10,7 +10,7 @@ export function setMenuList(brand) {
 
     if (brand === 'TH') {
         menuList = [
-          { href: "/01", Div: "01", name: "TH Menswear", img: "/img/divisions/msw.jpg" },
+          { href: "/01", Div: "01", name: "TH Menswear", img: "/img/divisions/msw.jpg"},
           { href: "/02", Div: "02", name: "Tommy Jeans", img: "/img/divisions/dnm.jpg" },
           { href: "/03", Div: "03", name: "TH Licensing", img: "/img/divisions/licensing.jpg"},
           { href: "/04", Div: "04", name: "TH Kids",img: "/img/divisions/kids.jpg" },
