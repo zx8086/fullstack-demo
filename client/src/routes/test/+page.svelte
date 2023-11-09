@@ -1,79 +1,51 @@
 <script>
-    import { gql } from 'graphql-request';
-    import { GraphQLClient } from 'graphql-request';
+    import { Client, setContextClient, cacheExchange, fetchExchange, queryStore, gql, getContextClient } from '@urql/svelte';
+    import { devtoolsExchange } from '@urql/devtools';
     import { onMount } from 'svelte';
-    import {GET_OPTIONS, GET_TOTAL_COUNT} from './graphqlQueries';
+    import { GET_OPTIONS, GET_OPTIONS_LIMIT, GET_TOTAL_COUNT, GET_TODOS } from './graphqlQueries';
   
-    const endpoint = 'http://localhost:8080/graphql/';
+    const client = new Client({
+      url: 'http://localhost:8080/graphql',
+      exchanges: [devtoolsExchange, cacheExchange, fetchExchange],
+    });
   
-    const client = new GraphQLClient(endpoint);
-    let options = [];
-    let isLoading = true;
+    setContextClient(client);
   
-    // Pagination variables
-    let currentPage = 1;
-    let itemsPerPage = 10; // Change this to your desired number
-    let totalItems = 0;
+    let limit = 10; // Adjust to your pagination size
+    let from = 0; // Represents the current page
   
-    // Calculate the skip value based on currentPage and itemsPerPage
-    let skip = (currentPage - 1) * itemsPerPage;
+    $: results = queryStore({
+      client: client,
+      query: GET_TODOS,
+      variables: { from, limit }
+    });
   
-    async function fetchData() {
-      try {
-        const { options: fetchedOptions } = await client.request(GET_OPTIONS, {
-          first: itemsPerPage,
-          skip: skip,
-        });
-        options = fetchedOptions;
-        isLoading = false;
-  
-        // Fetch the total count of items
-        const { _allOptionsMeta } = await client.request(GET_TOTAL_COUNT);
-        totalItems = _allOptionsMeta.count;
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        isLoading = false;
-      }
-    }
-  
-    onMount(fetchData);
-  
-    // Pagination functions
+    console.log("from: " + from);
+    console.log("limit: " + limit);
+
+    // Implement your pagination logic here
     function nextPage() {
-      if (skip + itemsPerPage < totalItems) {
-        currentPage++;
-        skip = (currentPage - 1) * itemsPerPage;
-        fetchData();
-      }
+      from = from + 10;
     }
   
-    function prevPage() {
-      if (currentPage > 1) {
-        currentPage--;
-        skip = (currentPage - 1) * itemsPerPage;
-        fetchData();
-      }
-    }
   </script>
   
-  <div>
-    {#if isLoading}
-      <p>Loading options...</p>
-    {:else if options.length > 0}
-      <h2>Option Details</h2>
-      {#each options as option (option.id)}
-        <div>
-          <p>{option.description}</p>
-          <!-- Add more details from the current option as needed -->
-        </div>
-      {/each}
-      <!-- Pagination controls -->
-      <div class="pagination">
-        <button on:click={prevPage} disabled={currentPage === 1}>Previous</button>
-        <button on:click={nextPage} disabled={skip + itemsPerPage >= totalItems}>Next</button>
-      </div>
-    {:else}
-      <p>No data available</p>
-    {/if}
-  </div>
+  {#if $results.fetching}
+    <p>Loading...</p>
+  {:else if $results.error}
+    <p>Error: {$results.error.message}</p>
+  {:else if $results.data && Array.isArray($results.data.optionsPage)}
+    {#each $results.data.optionsPage as option, i}
+      {#if option}
+        <p>{option.i}</p>
+      {:else}
+        <p>No data available</p>
+      {/if}
+      <p>{option.id}</p>
+    {/each}
+  {:else}
+    <p>No data available</p>
+  {/if}
+  
+  <button on:click={nextPage}>Next Page</button>
   

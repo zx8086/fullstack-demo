@@ -26,6 +26,8 @@
   "type": "module",
   "dependencies": {
     "@elastic/apm-rum": "^5.15.0",
+    "@urql/devtools": "^2.0.3",
+    "@urql/svelte": "^4.0.4",
     "add": "^2.0.6",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
