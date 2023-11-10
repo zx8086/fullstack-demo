@@ -11,7 +11,6 @@
   
     setContextClient(client);
 
-  
     $: results = queryStore({
       client: client,
       query: GET_OPTIONS_BY_DIVISION_CODE,
@@ -27,14 +26,19 @@
   
   {#if $results.fetching}
   <p>Loading...</p>
-{:else if $results.error}
-  <p>Error: {$results.error.message}</p>
-{:else if $results.data && Array.isArray($results.data.optionsByDivisionCode) && $results.data.optionsByDivisionCode.length > 0}
-  {#each $results.data.optionsByDivisionCode as option}
-    <p>{option.id}</p>
-    <!-- Render other option data here -->
-  {/each}
-{:else}
+    {:else if $results.error}
+      <p>Error: {$results.error.message}</p>
+    {:else if $results.data && Array.isArray($results.data.optionsByDivisionCode) && $results.data.optionsByDivisionCode.length > 0}
+      {#each $results.data.optionsByDivisionCode as option}
+        <div class="option">
+          {#each Object.entries(option) as [key, value]}
+            <p>
+              <strong>{key}:</strong> {value}
+            </p>
+          {/each}
+        </div>
+      {/each}
+    {:else}
   <p>No data available</p>
 {/if}
 
