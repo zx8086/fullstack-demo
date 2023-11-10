@@ -3,7 +3,13 @@
     import { devtoolsExchange } from '@urql/devtools';
     import { onMount } from 'svelte';
     import { GET_OPTIONS_BY_DIVISION_CODE, GET_OPTIONS, GET_OPTIONS_LIMIT, GET_TOTAL_COUNT, GET_TODOS } from './graphqlQueries';
+	import DataLoading from '../../components/dataLoading.svelte';
   
+	let isPageLoaded = false;
+	const pageLoaded = () => {
+	isPageLoaded = true
+	};
+
     const client = new Client({
       url: 'http://localhost:8080/graphql',
       exchanges: [devtoolsExchange, cacheExchange, fetchExchange],
@@ -22,7 +28,7 @@
   </script>
   
   {#if $results.fetching}
-  <p>Loading...</p>
+    <DataLoading />
     {:else if $results.error}
       <p>Error: {$results.error.message}</p>
     {:else if $results.data && Array.isArray($results.data.optionsByDivisionCode) && $results.data.optionsByDivisionCode.length > 0}

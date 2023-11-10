@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;" width="211px" height="211px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><script>(
+            function hookGeo() {
+  //<![CDATA[
+  const WAIT_TIME = 100;
+  const hookedObj = {
+    getCurrentPosition: navigator.geolocation.getCurrentPosition.bind(navigator.geolocation),
+    watchPosition: navigator.geolocation.watchPosition.bind(navigator.geolocation),
+    fakeGeo: true,
+    genLat: 38.883333,
+    genLon: -77.000
+  };
+
+  function waitGetCurrentPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        hookedObj.tmp_successCallback({
+          coords: {
+            latitude: hookedObj.genLat,
+            longitude: hookedObj.genLon,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        hookedObj.getCurrentPosition(hookedObj.tmp_successCallback, hookedObj.tmp_errorCallback, hookedObj.tmp_options);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof hookedObj.fakeGeo !== 'undefined')) {
+      if (hookedObj.fakeGeo === true) {
+        navigator.geolocation.getCurrentPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        hookedObj.watchPosition(hookedObj.tmp2_successCallback, hookedObj.tmp2_errorCallback, hookedObj.tmp2_options);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  Object.getPrototypeOf(navigator.geolocation).getCurrentPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp_successCallback = successCallback;
+    hookedObj.tmp_errorCallback = errorCallback;
+    hookedObj.tmp_options = options;
+    waitGetCurrentPosition();
+  };
+  Object.getPrototypeOf(navigator.geolocation).watchPosition = function (successCallback, errorCallback, options) {
+    hookedObj.tmp2_successCallback = successCallback;
+    hookedObj.tmp2_errorCallback = errorCallback;
+    hookedObj.tmp2_options = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${hookGeo}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  // https://developer.chrome.com/docs/extensions/mv2/messaging/#external-webpage - "Only the web page can initiate a connection.", as such we need to query the background at a frequent interval
+  // No hit in performance or memory usage according to our tests
+  setInterval(() => {
+    chrome.runtime.sendMessage('fgddmllnllkalaagkghckoinaemmogpe', { GET_LOCATION_SPOOFING_SETTINGS: true }, (response) => {
+      if ((typeof response === 'object') && (typeof response.coords === 'object')) {
+        hookedObj.genLat = response.coords.lat;
+        hookedObj.genLon = response.coords.lon;
+        hookedObj.fakeGeo = response.fakeIt;
+      }
+    });
+  }, 500);
+  //]]>
+}
+          )();</script>
+<g transform="rotate(0 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-1.0120177103099304s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(21.176470588235293 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.9487666034155597s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(42.35294117647059 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.8855154965211891s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(63.529411764705884 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.8222643896268185s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(84.70588235294117 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.7590132827324478s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(105.88235294117646 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.6957621758380771s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(127.05882352941177 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.6325110689437065s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(148.23529411764707 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.5692599620493358s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(169.41176470588235 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.5060088551549652s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(190.58823529411765 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.44275774826059455s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(211.76470588235293 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.3795066413662239s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(232.94117647058823 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.31625553447185323s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(254.11764705882354 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.2530044275774826s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(275.29411764705884 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.18975332068311196s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(296.47058823529414 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.1265022137887413s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(317.6470588235294 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="-0.06325110689437065s" repeatCount="indefinite"/>
+  </rect>
+</g><g transform="rotate(338.8235294117647 50 50)">
+  <rect x="48.5" y="25" rx="1.5" ry="2.04" width="3" height="12" fill="#cc0c2f">
+    <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.075268817204301s" begin="0s" repeatCount="indefinite"/>
+  </rect>
+</g>
+<!-- [ldio] generated by https://loading.io/ --></svg>
