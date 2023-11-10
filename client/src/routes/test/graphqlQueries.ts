@@ -10,8 +10,8 @@ query {
 `;
 
 export const GET_OPTIONS_BY_DIVISION_CODE = gql`
-  query GetOptionsByDivisionCode($divisionCode: String!) {
-    options(filter: { divisionCode: $divisionCode }) {
+  query optionsByDivisionCode($divisionCode: String!) {
+    optionsByDivisionCode(divisionCode: $divisionCode) {
       id
       description
       images
