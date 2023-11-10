@@ -11,17 +11,14 @@
   
     setContextClient(client);
 
+	let selectedDivision = "03";
+
     $: results = queryStore({
       client: client,
       query: GET_OPTIONS_BY_DIVISION_CODE,
-      variables: { divisionCode: "01" } 
+      variables: { divisionCode: selectedDivision } 
     });
 
-    // Implement your pagination logic here
-    // function nextPage() {
-    //   from = from + 10;
-    // }
-  
   </script>
   
   {#if $results.fetching}
@@ -41,7 +38,3 @@
     {:else}
   <p>No data available</p>
 {/if}
-
-  
-  <!-- <button on:click={nextPage}>Next Page</button> -->
-  

@@ -31,6 +31,8 @@
     "add": "^2.0.6",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
+    "siema": "^1.5.1",
+    "svelte-carousel": "^1.0.25",
     "svelte-routing": "^2.6.0"
   }
 }
