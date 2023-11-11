@@ -1,19 +1,58 @@
+/* app.css  */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Tommy Hilfiger theme styles */
 .theme-th {
-    @apply bg-red-100 text-red-700;
-    /* Define other TH-specific styles here */
+  /* Base styles for the th-theme */
+  @apply bg-tommy-background-lightest text-tommy-dark-blue;
+
+  /* Styles for buttons in TH theme */
+  .btn-th {
+    @apply text-tommy-white bg-tommy-red border border-transparent font-bold py-2 px-4 rounded;
   }
-  
-  .theme-ck {
-    @apply bg-blue-100 text-blue-700;
-    /* Define other CK-specific styles here */
+  .btn-th:hover {
+    @apply bg-tommy-orange; /* Assuming you want a darker red on hover */
   }
-  
-  .theme-nike {
-    @apply bg-green-100 text-green-700;
-    /* Define other Nike-specific styles here */
+  .btn-th:focus {
+    @apply ring-tommy-dark-blue ring-opacity-50 outline-none;
   }
-  
+
+  /* Styles for product cards in TH theme */
+  .card-th {
+    @apply bg-tommy-white border border-tommy-background-medium-gray rounded-lg overflow-hidden;
+  }
+  .card-th:hover {
+    @apply shadow-lg;
+  }
+
+  /* Styles for navigation in TH theme */
+  .nav-th {
+    @apply bg-tommy-background-navy text-tommy-white;
+  }
+  .nav-th a {
+    @apply text-tommy-white hover:text-tommy-light-gray;
+  }
+
+  /* Styles for headings in TH theme */
+  .heading-th {
+    @apply text-2xl font-bold text-tommy-dark-blue;
+  }
+
+  /* Styles for prices in TH theme */
+  .price-th {
+    @apply text-lg font-semibold text-tommy-red;
+  }
+
+  /* Other utility styles in TH theme */
+  .border-th {
+    @apply border-tommy-border-dark-blue;
+  }
+  .placeholder-th {
+    @apply placeholder-tommy-background-medium-gray;
+  }
+
+  /* ... additional nested hover and focus states for TH theme elements ... */
+}
