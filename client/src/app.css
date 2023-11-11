@@ -54,5 +54,71 @@
     @apply placeholder-tommy-background-medium-gray;
   }
 
-  /* ... additional nested hover and focus states for TH theme elements ... */
+/* Styles for the 'VIEW DETAILED REPORT' button in TH theme */
+.btn-th-detailed-report {
+  @apply text-tommy-white bg-tommy-background-medium-gray border border-transparent font-bold py-2 px-4 rounded transition-colors duration-300 ease-in-out;
+}
+
+.btn-th-detailed-report:hover {
+  @apply bg-tommy-black; /* Change according to the hover color you want */
+}
+
+}
+
+/* Calvin Klein theme styles */
+.theme-ck {
+  /* Base styles for the ck-theme */
+  @apply bg-white text-gray-800;
+
+  /* Styles for buttons in CK theme */
+  .btn-ck {
+    @apply text-white bg-black border border-transparent font-bold py-2 px-4 rounded;
+  }
+  .btn-ck:hover {
+    @apply bg-gray-800; /* A slightly lighter black on hover */
+  }
+  .btn-ck:focus {
+    @apply ring-gray-800 ring-opacity-50 outline-none;
+  }
+
+  /* Styles for product cards in CK theme */
+  .card-ck {
+    @apply bg-white border border-gray-300 rounded-lg overflow-hidden;
+  }
+  .card-ck:hover {
+    @apply shadow-lg;
+  }
+
+  /* Styles for navigation in CK theme */
+  .nav-ck {
+    @apply bg-gray-900 text-white;
+  }
+  .nav-ck a {
+    @apply text-white hover:text-gray-300;
+  }
+
+  /* Styles for headings in CK theme */
+  .heading-ck {
+    @apply text-3xl font-bold text-gray-900;
+  }
+
+  /* Styles for text in CK theme */
+  .text-ck {
+    @apply font-sans text-base font-normal leading-normal;
+  }
+
+  /* Styles for prices in CK theme */
+  .price-ck {
+    @apply text-lg font-semibold text-black;
+  }
+
+  /* Other utility styles in CK theme */
+  .border-ck {
+    @apply border-gray-300;
+  }
+  .placeholder-ck {
+    @apply placeholder-gray-500;
+  }
+
+  /* ... additional nested hover and focus states for CK theme elements ... */
 }
