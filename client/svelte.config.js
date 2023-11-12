@@ -8,6 +8,7 @@ const config = {
   kit: {
     adapter: adapter(),
   },
+  hmr: false,
   preprocess: vitePreprocess(),
 };
 

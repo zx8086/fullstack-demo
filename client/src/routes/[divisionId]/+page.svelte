@@ -3,7 +3,9 @@
   import { menuListStore } from '../../stores/menuList';
   import ProgressBar from '../../components/ProgressBar.svelte';
   // import { queryStore } from '../../components/graphqlHelper';
-  import DataLoading from '../../components/dataLoading.svelte';
+  // import DataLoading from '../../components/dataLoading.svelte';
+  // import DataFetcher from '../../components/DataFetcher.svelte'; // Update the path to the DataFetcher component
+
 
   let menuList = [];
   menuListStore.subscribe(value => {
@@ -21,25 +23,10 @@
   // Initialize aggregated totals (you can also import this store from 'aggregatedTotalsStore.js')
   let soldOutStyleOptionsCount = 0;
 
-  // Fetch GraphQL data and update aggregated totals
-  const fetchGraphQLData = async () => {
-    const selectedDivision = currentDivision ? currentDivision.Div : '';
-    const { data, error } = await queryStore(selectedDivision);
-
-    if (error) {
-      console.error('GraphQL query error:', error);
-      return;
-    }
-
-    // Update the aggregated totals from the GraphQL response data
-    soldOutStyleOptionsCount = data.aggregatedTotals.soldOutStyleOptionsCount;
-    // Update other aggregated totals as needed
-  };
-
   // Call the function to fetch GraphQL data when the component mounts
   import { onMount } from 'svelte';
   onMount(() => {
-    fetchGraphQLData();
+
   });
 </script>
 
@@ -57,6 +44,7 @@
           <div class="p-4">
             <p class="font-bold">STYLE OPTIONS</p>
             <p>{currentDivision.styleOptionsCompleted} OF {currentDivision.styleOptionsTotal} COMPLETE</p>
+            <!-- <DataFetcher {divisionCode} {salesChannels} /> -->
             <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
             <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
             <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
