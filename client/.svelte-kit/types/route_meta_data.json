@@ -1,0 +1,10 @@
+{
+	"/": [
+		"src/routes/+page.js"
+	],
+	"/graphql-test-options": [],
+	"/graphql-test-totals": [],
+	"/modular-graphql": [],
+	"/test": [],
+	"/[divisionId]": []
+}

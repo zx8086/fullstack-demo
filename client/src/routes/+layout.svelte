@@ -70,15 +70,9 @@
   }
 </script>
 
-<Sidebar
-  lists={$menuListStore}
-  {siteName}
-  {headerClass}
-  {asideClass}
-  {navClass}
-/>
+<Sidebar lists={$menuListStore} {siteName} {headerClass} {asideClass} {navClass}/>
 <main class="container mx-auto p-24 ${themeClass}">
   <h1 class="text-3xl">
-    <slot></slot>
+    <!-- <slot></slot> -->
   </h1>
 </main>

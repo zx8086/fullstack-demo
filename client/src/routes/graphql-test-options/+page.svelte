@@ -25,7 +25,7 @@ $: result = queryStore({
 {:else}
   {#each $result.data.optionsByDivisionCodeAndSalesChannel as option}
   <div class="card-th mb-4 text-sm">
-    <ul>
+    <ul class="p-4">
         <li>Style Number: {option.styleNumber}</li>
         <li>Description: {option.description}</li>
         <li>Fashionability: {option.fashionability}</li>
