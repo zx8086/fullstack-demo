@@ -6,11 +6,14 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
+    "compile": "graphql-codegen",
+    "watch": "graphql-codegen -w"
   },
   "devDependencies": {
     "@fontsource/fira-mono": "^4.5.10",
     "@neoconfetti/svelte": "^1.0.0",
+    "@parcel/watcher": "^2.3.0",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.20.4",
     "@types/cookie": "^0.5.1",
@@ -21,17 +24,21 @@
     "svelte-check": "^3.4.3",
     "svelte-sidebar-menu": "^0.9.12",
     "tailwindcss": "^3.3.5",
-    "typescript": "^5.0.0",
+    "typescript": "^5.2.2",
     "vite": "^4.4.2"
   },
   "type": "module",
   "dependencies": {
     "@elastic/apm-rum": "^5.15.0",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@urql/devtools": "^2.0.3",
     "@urql/svelte": "^4.0.4",
     "add": "^2.0.6",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
+    "react": "^18.2.0",
     "siema": "^1.5.1",
     "svelte-carousel": "^1.0.25",
     "svelte-routing": "^2.6.0"
