@@ -1,46 +1,102 @@
 <script>
-    import { Client, setContextClient, cacheExchange, fetchExchange, queryStore, gql, getContextClient } from '@urql/svelte';
-    import { devtoolsExchange } from '@urql/devtools';
-    import { onMount } from 'svelte';
-    import { GET_OPTIONS_BY_DIVISION_CODE, GET_OPTIONS, GET_OPTIONS_LIMIT, GET_TOTAL_COUNT, GET_TODOS } from './graphqlQueries';
-	import DataLoading from '../../components/dataLoading.svelte';
-  
-	let isPageLoaded = false;
-	const pageLoaded = () => {
-	isPageLoaded = true
-	};
+	import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core";
+	import { setClient, query, mutation } from "svelte-apollo";	
 
-    const client = new Client({
-      url: 'http://localhost:8080/graphql',
-      exchanges: [devtoolsExchange, cacheExchange, fetchExchange],
-    });
-  
-    setContextClient(client);
+	const client = new ApolloClient({
+		uri: "http://localhost:3000/graphql",
+		cache: new InMemoryCache()
+	});
+	setClient(client);
 
-	let selectedDivision = "03";
+	// Query
 
-    $: results = queryStore({
-      client: client,
-      query: GET_OPTIONS_BY_DIVISION_CODE,
-      variables: { divisionCode: selectedDivision } 
-    });
+	const BOOKS = gql`
+		query Books($search: String) {
+			books(search: $search) {
+				id
+				slug
+				title
+				author {
+					name
+				}
+			}
+		}
+	`;
 
-  </script>
-  
-  {#if $results.fetching}
-    <DataLoading />
-    {:else if $results.error}
-      <p>Error: {$results.error.message}</p>
-    {:else if $results.data && Array.isArray($results.data.optionsByDivisionCode) && $results.data.optionsByDivisionCode.length > 0}
-      {#each $results.data.optionsByDivisionCode as option}
-        <div class="option">
-          {#each Object.entries(option) as [key, value]}
-            <p>
-              <strong>{key}:</strong> {value}
-            </p>
-          {/each}
-        </div>
-      {/each}
-    {:else}
-  <p>No data available</p>
-{/if}
+	let search;
+	const books = query(BOOKS, {
+		variables: { search }
+	});
+
+	function reload() {
+		books.refetch();
+	}
+
+	$: books.refetch({ search });
+
+	// Mutation
+
+	const ADD_BOOK = gql`
+		mutation AddBook($title: String, $author: String) {
+			addBook(title: $title, author: $author) {
+				id
+				slug
+				title
+				author {
+					name
+				}
+			}
+		}
+	`;
+	const addBook = mutation(ADD_BOOK);
+
+	function handleSubmit(event) {
+		const data = new FormData(event.target);
+
+		(async () => {
+			const title = data.get("title");
+			const author = data.get("author");
+
+			await addBook({variables: { title, author } });
+			
+			event.target.reset();
+
+			// TEMP Explicitly refetch
+			// (there's probably some way to explicitly update the cache, although search might not match)
+			books.refetch({ search });
+		})().catch(error => {
+			// TODO
+			console.error(error);
+		})
+
+  }
+</script>
+
+<h1>svelte-apollo</h1>
+
+<label>Search <input type="search" bind:value="{search}" /></label>
+
+<!-- <ul>
+  {#if $books.loading}
+    <li>Loading...</li>
+  {:else if $books.error}
+    <li>ERROR: {$books.error.message}</li>
+  {:else}
+    {#each $books.data.books as book (book.id)}
+      <li>{book.title} by {book.author.name}</li>
+    {/each}
+  {/if}
+</ul>
+
+<button on:click="{reload}">Reload</button>
+
+<hr>
+
+<h2>Add Book</h2>
+
+<form on:submit|preventDefault="{handleSubmit}">
+	<label>Title <input type="text" name="title" /></label>
+	<label>Author <input type="text" name="author" /></label>
+
+	<button type="submit">Add Book</button>
+</form> -->
