@@ -33,9 +33,9 @@
             <!-- Content for the first column -->
             <h2 class="heading-th p-4">{divisionName} STYLE OPTIONS</h2>
             <div class="p-4">
-              <p class="font-bold">STYLE OPTIONS</p>
+              <p>STYLE OPTIONS</p>
               <p>{currentDivision.styleOptionsCompleted} OF {currentDivision.styleOptionsTotal} COMPLETE</p>
-              <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
+              <p><ProgressBar percentage={(currentDivision.styleOptionsCompleted / currentDivision.styleOptionsTotal) * 100} /></p>
               <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
               <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
               <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>

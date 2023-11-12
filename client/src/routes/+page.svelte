@@ -16,7 +16,7 @@
   // Movie data for each brand (you can fetch this data from an API)
   let movieData = {
     'TH': [
-      { title: 'Movie 1', videoUrl: '/FESTIVE MSW1080x1080.mp4' },
+      { title: 'Movie 1', videoUrl: '/th.mp4' },
       { title: 'Movie 2', videoUrl: 'https://www.example.com/th-video2.mp4' },
       // Add more movies for TH brand
     ],
