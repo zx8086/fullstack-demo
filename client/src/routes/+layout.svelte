@@ -8,8 +8,8 @@
 
   let siteName = "Home";
   let headerClass = "${themeClass} animate-pulse py-3 pl-3";
-  let asideClass = "${themeClass} bg-transparent absolute w-auto";
-  let navClass = "${themeClass} uppercase pl-5 pr-10 leading-10";
+  let asideClass = "${themeClass} bg-transparent absolute w-auto z-50";
+  let navClass = "${themeClass} uppercase pl-5 pr-10 leading-10 z-50";
 
   onMount(() => {
     // This will run only in the browser, after the component has mounted
