@@ -8,7 +8,7 @@
 
   setContextClient(client);
 
-  let divisionCode = '01';
+  let divisionCode = '11';
   let salesChannels = ["SELLIN"];
 
 $: result = queryStore({

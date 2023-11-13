@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/modular-graphql/+page.svelte";
+export { default as component } from "../../../../src/routes/[divisionId]/+page.svelte";

@@ -8,18 +8,24 @@ export const nodes = [
 	() => import('./nodes/4'),
 	() => import('./nodes/5'),
 	() => import('./nodes/6'),
-	() => import('./nodes/7')
+	() => import('./nodes/7'),
+	() => import('./nodes/8'),
+	() => import('./nodes/9'),
+	() => import('./nodes/10')
 ];
 
 export const server_loads = [];
 
 export const dictionary = {
 		"/": [2],
-		"/graphql-test-options": [5],
-		"/graphql-test-totals": [4],
-		"/modular-graphql": [7],
+		"/graphql-test-options": [6],
+		"/graphql-test-totals": [5],
+		"/modular-graphql": [10],
+		"/passing-data-refactor": [4],
+		"/some-example/movies": [~9],
+		"/some-example/shop": [8],
 		"/test": [3],
-		"/[divisionId]": [6]
+		"/[divisionId]": [7]
 	};
 
 export const hooks = {

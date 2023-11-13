@@ -3,8 +3,19 @@
 		"src/routes/+page.js"
 	],
 	"/graphql-test-options": [],
-	"/graphql-test-totals": [],
+	"/graphql-test-totals": [
+		"src/routes/graphql-test-totals/+page.js"
+	],
 	"/modular-graphql": [],
+	"/passing-data-refactor": [
+		"src/routes/passing-data-refactor/+page.js"
+	],
+	"/some-example/movies": [
+		"src/routes/some-example/movies/+page.server.js"
+	],
+	"/some-example/shop": [
+		"src/routes/some-example/shop/+page.js"
+	],
 	"/test": [],
 	"/[divisionId]": []
 }
