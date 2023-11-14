@@ -2,7 +2,9 @@
 	"/": [
 		"src/routes/+page.js"
 	],
-	"/graphql-test-options": [],
+	"/graphql-test-options": [
+		"src/routes/graphql-test-options/+page.server.js"
+	],
 	"/graphql-test-totals": [
 		"src/routes/graphql-test-totals/+page.js"
 	],

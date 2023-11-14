@@ -1,24 +1,35 @@
+<!-- +page.svelte -->
 <script>
-  import { Client, setContextClient, cacheExchange, fetchExchange, queryStore, gql, getContextClient } from '@urql/svelte';
-  import { GET_OPTIONS_BY_DIVISION_CODE_AND_SALES_CHANNEL } from '../../components/graphqlQueries'
-  const client = new Client({
-    url: 'http://localhost:8080/graphql',
-    exchanges: [cacheExchange, fetchExchange],
-  });
+  // Import the necessary modules from +page.server.js
+  import { data, fetching, error } from './+page.server';
 
-  setContextClient(client);
-
-  let divisionCode = '11';
-  let salesChannels = ["SELLIN"];
-
-$: result = queryStore({
-  client: getContextClient(),
-  query: GET_OPTIONS_BY_DIVISION_CODE_AND_SALES_CHANNEL,
-  variables: { divisionCode, salesChannels}
-  });
+  // Check if data is loading
+  {#if fetching}
+    <p>Loading...</p>
+  {:else if error}
+    <p>Error: {error.message}</p>
+  {:else}
+    {#if data.optionsByDivisionAndChannel}
+      {#each data.optionsByDivisionAndChannel as option (option.internal_id)}
+        <div class="card-th mb-4 text-sm">
+          <h2>Option: {option.internal_id}</h2>
+          <!-- Display other option details here -->
+        </div>
+      {/each}
+    {:else}
+      <p>No options found.</p>
+    {/if}
+  {/if}
 </script>
 
-{#if $result.fetching}
+<!-- Add your HTML layout for displaying data -->
+<div class="container mx-auto p-4">
+  <!-- You can customize how you want to display the data here -->
+</div>
+
+
+
+<!-- {#if $result.fetching}
 <p>Loading...</p>
 {:else if $result.error}
 <p>Oh no... {$result.error.message}</p>
@@ -46,4 +57,4 @@ $: result = queryStore({
     </ul>
   </div>
   {/each}
-{/if}
+{/if} -->

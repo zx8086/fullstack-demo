@@ -18,7 +18,7 @@ export const server_loads = [];
 
 export const dictionary = {
 		"/": [2],
-		"/graphql-test-options": [6],
+		"/graphql-test-options": [~6],
 		"/graphql-test-totals": [5],
 		"/modular-graphql": [10],
 		"/passing-data-refactor": [4],
