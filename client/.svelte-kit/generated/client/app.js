@@ -14,18 +14,18 @@ export const nodes = [
 	() => import('./nodes/10')
 ];
 
-export const server_loads = [];
+export const server_loads = [0];
 
 export const dictionary = {
 		"/": [2],
-		"/graphql-test-options": [~6],
-		"/graphql-test-totals": [5],
-		"/modular-graphql": [10],
-		"/passing-data-refactor": [4],
-		"/some-example/movies": [~9],
-		"/some-example/shop": [8],
-		"/test": [3],
-		"/[divisionId]": [7]
+		"/graphql-test-totals": [4],
+		"/houdini-options": [5],
+		"/modular-graphql": [6],
+		"/passing-data-refactor": [7],
+		"/some-example/movies": [~8],
+		"/some-example/shop": [9],
+		"/test": [10],
+		"/[divisionId]": [3]
 	};
 
 export const hooks = {

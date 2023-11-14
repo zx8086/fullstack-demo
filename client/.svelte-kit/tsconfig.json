@@ -1,6 +1,12 @@
 {
 	"compilerOptions": {
 		"paths": {
+			"$houdini": [
+				"../$houdini"
+			],
+			"$houdini/*": [
+				"../$houdini/*"
+			],
 			"$lib": [
 				"../src/lib"
 			],

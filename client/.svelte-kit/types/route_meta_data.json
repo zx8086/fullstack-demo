@@ -1,23 +1,50 @@
 {
 	"/": [
-		"src/routes/+page.js"
-	],
-	"/graphql-test-options": [
-		"src/routes/graphql-test-options/+page.server.js"
+		"src/routes/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
 	],
 	"/graphql-test-totals": [
-		"src/routes/graphql-test-totals/+page.js"
+		"src/routes/graphql-test-totals/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
 	],
-	"/modular-graphql": [],
+	"/houdini-options": [
+		"src/routes/houdini-options/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
+	],
+	"/modular-graphql": [
+		"src/routes/modular-graphql/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
+	],
 	"/passing-data-refactor": [
-		"src/routes/passing-data-refactor/+page.js"
+		"src/routes/passing-data-refactor/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
 	],
 	"/some-example/movies": [
-		"src/routes/some-example/movies/+page.server.js"
+		"src/routes/some-example/movies/+page.js",
+		"src/routes/some-example/movies/+page.server.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
 	],
 	"/some-example/shop": [
-		"src/routes/some-example/shop/+page.js"
+		"src/routes/some-example/shop/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
 	],
-	"/test": [],
-	"/[divisionId]": []
+	"/test": [
+		"src/routes/test/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
+	],
+	"/[divisionId]": [
+		"src/routes/[divisionId]/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
+	]
 }

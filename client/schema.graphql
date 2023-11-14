@@ -1,0 +1,182 @@
+type Dimensions {
+  heelHeight: Float
+  height: Float
+  length: Float
+  shaftHeight: Float
+  width: Float
+}
+
+type Inseam {
+  index: Int
+  name: String
+  sizes: [Size]
+}
+
+type MerchandisingHierarchy {
+  business: String
+  category: String
+  code: String
+  gender: String
+  lifestyle: String
+  productgroup: String
+  productsubgroup: String
+  world: String
+}
+
+type Option {
+  activeOption: Boolean
+  brand: String
+  brandCode: String
+  certificationStyles: [String]
+  channels: [String]
+  closure: String
+  collar: String
+  collection: String
+  collectionStructure: String
+  color: String
+  colorDescription1: String
+  colorDescription2: String
+  consumerAssortment: String
+  consumerAssortmentCode: String
+  copiedFromOption: String
+  countryOfOrigin: String
+  ctpMonth: String
+  description: String
+  dimensions: Dimensions
+  distribution: String
+  divisionCode: String
+  documentType: String
+  effectiveHeelHeightCM: Float
+  fabric: String
+  fashionability: String
+  fashionabilityCode: String
+  fit: String
+  fitForBottoms: String
+  fitForTops: String
+  fmsCollectionCode: String
+  fmsMainSeasonCode: String
+  garmentLength: String
+  hasSustainableMaterials: Boolean
+  hexCode: String
+  images: String
+  innovation: Boolean
+  innovationAttributes: String
+  inseams: Inseam
+  insockComposition: String
+  internalStyleName: String
+  internal_id: String
+  isAvailable: Boolean
+  isCancelled: Boolean
+  isClosed: Boolean
+  isInvalid: Boolean
+  isLicensed: Boolean
+  isNew: Boolean
+  isSoldOut: Boolean
+  isUpdated: Boolean
+  keyLook: String
+  label: String
+  liningComposition: String
+  llo: Int
+  mainSeason: String
+  merchandisingHierarchy: MerchandisingHierarchy
+  neckline: String
+  openForEcom: Boolean
+  optionCode: String
+  optionType: String
+  originatingProductLine: String
+  originatingProductLineCode: String
+  packingType: String
+  paddingComposition: String
+  pimDeliveryDates: PimDeliveryDates
+  pimOptionKeyNo: String
+  pimProductKeyNo: String
+  plannedWashOption: String
+  platformHeightCM: Float
+  prepackSizeOffer: String
+  priceBySize: Boolean
+  productStory: String
+  program: String
+  referenceOptionNumber: String
+  referenceStyleNumber: String
+  rise: String
+  salesChannels: [String]
+  salesComments: String
+  salesOrganizationCode: String
+  seasonYear: String
+  shape: String
+  shoeOutsoleComposition: String
+  sizeCode: String
+  sizeRange: String
+  sizeRangeOption: String
+  sleeveLength: String
+  styleDescription: String
+  styleDescriptions: [String]
+  styleNumber: String
+  styleSeasonCode: String
+  sustainableAttribute: String
+  sustainableFiber: String
+  sustainableFibers: [String]
+  swatchBookNumber: String
+  theme: Theme
+  upperComposition: String
+  wash: String
+}
+
+type OptionCounts {
+  isAvailableCount: Int
+  isCancelledCount: Int
+  isNewCount: Int
+  isSoldOutCount: Int
+  isUpdatedCount: Int
+  totalCount: Int
+}
+
+type PimDeliveryDates {
+  additionalDeliveryDate: String
+  adjustedDeliveryDate: String
+  dropDate: Float
+  modifiedOn: String
+}
+
+type Query {
+  optionCounts(divisionCode: String!, salesChannels: [String!]): OptionCounts
+  options: [Option]
+  optionsByDivisionAndChannels(divisionCode: String!, salesChannels: [String!]): [Option]
+  optionsByDivisionCode(divisionCode: String!): [Option]
+  optionsByDivisionCodeAndSalesChannel(divisionCode: String!, salesChannels: [String!]): [Option]
+  optionsPage(from: Int!, limit: Int!): [Option]
+  todos: [Todo!]!
+  todosPage(from: Int!, limit: Int!): [Todo!]!
+}
+
+type Size {
+  EAN: String
+  index: Int
+  name: String
+  pimVariantKeyNo: String
+  sapVariant: String
+  status: Status
+}
+
+type Status {
+  code: String
+  description: String
+  isAvailable: Boolean
+  isCancelled: Boolean
+  isClosed: Boolean
+  isInvalid: Boolean
+  isSoldOut: Boolean
+}
+
+type Subscription {
+  countdown(from: Int!): Int!
+}
+
+type Theme {
+  name: String
+}
+
+type Todo {
+  id: ID!
+  title: String!
+}

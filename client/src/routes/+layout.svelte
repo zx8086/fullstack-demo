@@ -34,7 +34,7 @@
   $: themeClass = $themeStore && `theme-${$themeStore.toLowerCase()}`;
   $: updateBodyClass($themeStore);
 
-  function updateBodyClass(theme: any) {
+  function updateBodyClass(theme) {
     if (typeof window !== 'undefined') {
       document.body.className = theme ? `theme-${theme.toLowerCase()}` : '';
     }

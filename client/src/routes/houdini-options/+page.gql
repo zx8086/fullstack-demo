@@ -1,0 +1,23 @@
+query getOptions {
+  options {
+    description
+    fabric
+    fashionability
+    color
+    colorDescription1
+    fit
+    salesOrganizationCode
+    llo
+    colorDescription2
+    countryOfOrigin
+    isNew
+    isClosed
+    isInvalid
+    isSoldOut
+    isUpdated
+    isAvailable
+    collection
+    activeOption
+    styleSeasonCode
+  }
+}
