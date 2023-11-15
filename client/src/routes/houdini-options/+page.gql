@@ -1,4 +1,4 @@
-query getOptions {
+query getOptions @cache(policy: CacheAndNetwork) {
   options {
     description
     fabric

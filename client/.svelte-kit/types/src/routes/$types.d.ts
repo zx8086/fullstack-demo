@@ -12,8 +12,8 @@ type EnsureDefined<T> = T extends null | undefined ? {} : T;
 type OptionalUnion<U extends Record<string, any>, A extends keyof U = U extends U ? keyof U : never> = U extends unknown ? { [P in Exclude<A, keyof U>]?: never } & U : never;
 export type Snapshot<T = any> = Kit.Snapshot<T>;
 type PageParentData = EnsureDefined<LayoutData>;
-type LayoutRouteId = RouteId | "/" | "/[divisionId]" | "/graphql-test-totals" | "/houdini-options" | "/modular-graphql" | "/passing-data-refactor" | "/some-example/movies" | "/some-example/shop" | "/test" | null
-type LayoutParams = RouteParams & { divisionId?: string }
+type LayoutRouteId = RouteId | "/" | "/[divisionCode]" | "/graphql-test-totals" | "/houdini-options" | "/modular-graphql" | "/passing-data-refactor" | "/some-example/movies" | "/some-example/shop" | "/test" | null
+type LayoutParams = RouteParams & { divisionCode?: string }
 type LayoutServerParentData = EnsureDefined<{}>;
 type LayoutParentData = EnsureDefined<{}>;
 

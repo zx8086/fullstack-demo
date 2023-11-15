@@ -25,7 +25,7 @@ export const dictionary = {
 		"/some-example/movies": [~8],
 		"/some-example/shop": [9],
 		"/test": [10],
-		"/[divisionId]": [3]
+		"/[divisionCode]": [3]
 	};
 
 export const hooks = {

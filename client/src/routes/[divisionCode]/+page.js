@@ -1,9 +1,8 @@
 /** @type {import('./$types').PageLoad} */
 
-import { fetchGraphQLData } from '../../utils/api/fetchGraphQLData';
+import { fetchGraphQLData } from './../../utils/api/fetchGraphQLData'
 
 export async function load({ params }) {
-  // const divisionCode = '11';
   const divisionCode = params.divisionCode;
   const salesChannels = ['SELLIN'];
 
@@ -25,6 +24,7 @@ export async function load({ params }) {
   try {
     const res = await fetchGraphQLData(query);
     const data = res.data.optionCounts;
+    console.log(`Division:- ${divisionCode}`,data);
 
     return { 
         data 

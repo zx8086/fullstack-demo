@@ -6,13 +6,24 @@
   // import DataLoading from '../../components/dataLoading.svelte';
   // import DataFetcher from '../../components/DataFetcher.svelte'; // Update the path to the DataFetcher component
 
+  export let data;
+
+  console.log("Passed data through prop", data);
+
+  $: isSoldOutCount = data.data.isSoldOutCount;
+  $: isAvailableCount = data.data.isAvailableCount;
+  $: isCancelledCount = data.data.isCancelledCount;
+  $: isNewCount = data.data.isNewCount;
+  $: isUpdatedCount = data. data.isUpdatedCount;
+  $: totalCount = data.data.totalCount;
+
 
   let menuList = [];
   menuListStore.subscribe(value => {
     menuList = value;
   });
 
-  $: divisionId = $page.params.divisionId;
+  $: divisionId = $page.params.divisionCode;
   $: currentDivision = menuList.find(division => division.Div === divisionId) || null;
 
   // Assuming each division object in your menuList has a property 'img' that contains the path to the image
@@ -20,8 +31,6 @@
   $: themeClass = currentDivision ? currentDivision.theme : 'theme-default';
   $: divisionName = currentDivision ? currentDivision.name.toUpperCase() : '';
 
-  // Initialize aggregated totals (you can also import this store from 'aggregatedTotalsStore.js')
-  let soldOutStyleOptionsCount = 0;
 
   // Call the function to fetch GraphQL data when the component mounts
   import { onMount } from 'svelte';
@@ -60,22 +69,27 @@
         </div>
         <div class="card-th mb-4">
           <div class="p-4">
-            <p class="font-bold">MISSING STYLE OPTIONS: {soldOutStyleOptionsCount}</p>
+            <p class="font-bold">AVAILABLE STYLE OPTIONS: {isAvailableCount} </p>
           </div>
         </div>
         <div class="card-th mb-4">
           <div class="p-4">
-            <p class="font-bold">PARTIALLY COMPLETED STYLE OPTIONS: {soldOutStyleOptionsCount}</p>
+            <p class="font-bold">SOLD OUT STYLE OPTIONS: {isSoldOutCount}</p>
           </div>
         </div>
         <div class="card-th mb-4">
           <div class="p-4">
-            <p class="font-bold">CANCELLED STYLE OPTIONS: {soldOutStyleOptionsCount}</p>
+            <p class="font-bold">CANCELED STYLE OPTIONS: {isCancelledCount}</p>
           </div>
         </div>
         <div class="card-th mb-4">
           <div class="p-4">
-            <p class="font-bold">SOLD OUT STYLE OPTIONS: {soldOutStyleOptionsCount}</p>
+            <p class="font-bold">PARTIALLY COMPLETED STYLE OPTIONS: </p>
+          </div>
+        </div>
+        <div class="card-th mb-4">
+          <div class="p-4">
+            <p class="font-bold">NEW STYLE OPTIONS: {isNewCount}</p>
           </div>
         </div>
       </div>

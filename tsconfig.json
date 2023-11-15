@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDirs": [".", "./.svelte-kit/types", "./$houdini/types"],
     "lib": ["ESNext"],
     "module": "esnext",
     "target": "esnext",

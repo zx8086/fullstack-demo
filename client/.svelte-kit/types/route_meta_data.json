@@ -42,8 +42,8 @@
 		"src/routes/+layout.js",
 		"src/routes/+layout.server.js"
 	],
-	"/[divisionId]": [
-		"src/routes/[divisionId]/+page.js",
+	"/[divisionCode]": [
+		"src/routes/[divisionCode]/+page.js",
 		"src/routes/+layout.js",
 		"src/routes/+layout.server.js"
 	]
