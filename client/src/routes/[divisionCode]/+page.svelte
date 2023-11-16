@@ -1,5 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import { goto } from '$app/navigation';
   import { menuListStore } from '../../stores/menuList';
   import ProgressBar from '../../components/ProgressBar.svelte';
   // import { queryStore } from '../../components/graphqlHelper';
@@ -40,10 +41,10 @@
 </script>
 
 {#if currentDivision}
-  <div class="container mx-auto p-4 {themeClass}">
-    <header style="width: 100%; height: 200px; background-image: url({headerImage}); background-size: cover; background-position: center;">
-      <!-- No img tag needed -->
-    </header>
+  <div class="container ml-20 mx-auto p-0 {themeClass}">
+      <div>
+        <img class="h-60 w-full rounded-lg mb-5 shadow-x object-cover object-topl" src={headerImage} alt="Header Image" />
+      </div>
     <div class="flex flex-row justify-center space-x-4">
       <div class="w-1/2">
         <!-- Column 1 -->
@@ -59,9 +60,9 @@
             <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
             <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
             <div class="flex justify-center mt-4">
-              <button class="btn-th-detailed-report">
+              <a href={`/${divisionId}/styles`} class="btn-th-detailed-report">
                 VIEW DETAILED REPORT
-              </button>
+              </a>
             </div>
           </div>
           <div class="p-4">
@@ -104,9 +105,9 @@
             <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
             <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
             <div class="flex justify-center mt-4">
-              <button class="btn-th-detailed-report">
+              <a href={`/${divisionId}/looks`} class="btn-th-detailed-report">
                 VIEW DETAILED REPORT
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -116,3 +117,23 @@
 {:else}
   <p>No division found for ID: {divisionId}</p>
 {/if}
+
+<style>
+    .header-with-gauges {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-image: url({headerImage});
+    background-size: cover;
+    background-position: center;
+  }
+
+  .gauges-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+  }
+</style>

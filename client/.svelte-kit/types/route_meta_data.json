@@ -46,5 +46,15 @@
 		"src/routes/[divisionCode]/+page.js",
 		"src/routes/+layout.js",
 		"src/routes/+layout.server.js"
+	],
+	"/[divisionCode]/looks": [
+		"src/routes/[divisionCode]/looks/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
+	],
+	"/[divisionCode]/styles": [
+		"src/routes/[divisionCode]/styles/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
 	]
 }

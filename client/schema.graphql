@@ -12,6 +12,25 @@ type Inseam {
   sizes: [Size]
 }
 
+type Look {
+  assetUrl: String
+  brand: String
+  createdOnSourceSystem: String
+  deliveryName: String
+  description: String
+  divisionCode: String
+  isDeleted: Boolean
+  lookId: String
+  modifiedOnSourceSystem: String
+  nuxeoId: String
+  processedOn: String
+  relatedStyles: [String]
+  styleSeasonCodeAfs: String
+  tag: String
+  title: String
+  trend: String
+}
+
 type MerchandisingHierarchy {
   business: String
   category: String
@@ -139,6 +158,8 @@ type PimDeliveryDates {
 }
 
 type Query {
+  looks: [Look]
+  looksByDivisionCode(divisionCode: String!): [Look]
   optionCounts(divisionCode: String!, salesChannels: [String!]): OptionCounts
   options: [Option]
   optionsByDivisionAndChannels(divisionCode: String!, salesChannels: [String!]): [Option]
