@@ -70,17 +70,15 @@
   }
 </script>
 
-<div class="header-container">
+<div class="container h-full w-full ml-20 mx-auto p-0">
   <!-- <img src="/img/PVH_Logo.svg" alt="PVH Logo" class="pvh-logo"> -->
-  <h1 class="report-title">DIGITAL SELLING DATA REPORT</h1>
-</div>
-
 <div class="carousel-container">
   <button on:click={previousBrand} class="carousel-button previous">&lt;</button>
   <div class="video-container">
     <video src={movieData[selectedBrand.value][0].videoUrl} autoplay loop muted class="carousel-video"></video>
   </div>
   <button on:click={nextBrand} class="carousel-button next">&gt;</button>
+</div>
 </div>
 
 <style>

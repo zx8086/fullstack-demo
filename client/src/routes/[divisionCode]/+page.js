@@ -12,10 +12,10 @@ export async function load({ params }) {
         salesChannels
       )}) {
         isAvailableCount
+        isUpdatedCount
         isCancelledCount
         isNewCount
         isSoldOutCount
-        isUpdatedCount
         totalCount
       }
     }

@@ -18,6 +18,12 @@
   $: isUpdatedCount = data. data.isUpdatedCount;
   $: totalCount = data.data.totalCount;
 
+// isAvailableCount
+// isUpdatedCount
+// isCancelledCount
+// isNewCount
+// isSoldOutCount
+// totalCount
 
   let menuList = [];
   menuListStore.subscribe(value => {
@@ -43,7 +49,7 @@
 {#if currentDivision}
   <div class="container ml-20 mx-auto p-0 {themeClass}">
       <div>
-        <img class="h-60 w-full rounded-lg mb-5 shadow-x object-cover object-topl" src={headerImage} alt="Header Image" />
+        <img src={headerImage} class="h-60 w-full rounded-lg mb-5 shadow-x object-cover object-topl" alt="Division Header"/>
       </div>
     <div class="flex flex-row justify-center space-x-4">
       <div class="w-1/2">
@@ -53,12 +59,12 @@
           <h2 class="heading-th p-4">{divisionName} STYLE OPTIONS</h2>
           <div class="p-4">
             <p class="font-bold">STYLE OPTIONS</p>
-            <p>{currentDivision.styleOptionsCompleted} OF {currentDivision.styleOptionsTotal} COMPLETE</p>
+            <p>{isUpdatedCount} OF {totalCount} COMPLETE</p>
             <!-- <DataFetcher {divisionCode} {salesChannels} /> -->
-            <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
-            <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
-            <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
-            <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
+            <p><ProgressBar percentage={isUpdatedCount / totalCount * 100} completed={isUpdatedCount} total={totalCount} /></p>
+            <p><ProgressBar percentage={isUpdatedCount / totalCount * 100} completed={isUpdatedCount} total={totalCount} /></p>
+            <p><ProgressBar percentage={isUpdatedCount / totalCount * 100} completed={isUpdatedCount} total={totalCount} /></p>
+            <p><ProgressBar percentage={isUpdatedCount / totalCount * 100} completed={isUpdatedCount} total={totalCount} /></p>
             <div class="flex justify-center mt-4">
               <a href={`/${divisionId}/styles`} class="btn-th-detailed-report">
                 VIEW DETAILED REPORT
@@ -101,9 +107,10 @@
           <h2 class="heading-th p-4">{divisionName} LOOKS</h2>
           <div class="p-4">
             <p class="font-bold">LOOKS</p>
-            <p>{currentDivision.looksCompleted} OF {currentDivision.looksTotal} COMPLETE</p>
-            <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
-            <p><ProgressBar percentage={90} completed={1256} total={1398} /></p>
+            <p>{isUpdatedCount} OF {totalCount} COMPLETE</p>
+            <!-- <DataFetcher {divisionCode} {salesChannels} /> -->
+            <p><ProgressBar percentage={isUpdatedCount / totalCount * 100} completed={isUpdatedCount} total={totalCount} /></p>
+            <p><ProgressBar percentage={isUpdatedCount / totalCount * 100} completed={isUpdatedCount} total={totalCount} /></p>
             <div class="flex justify-center mt-4">
               <a href={`/${divisionId}/looks`} class="btn-th-detailed-report">
                 VIEW DETAILED REPORT
@@ -117,23 +124,3 @@
 {:else}
   <p>No division found for ID: {divisionId}</p>
 {/if}
-
-<style>
-    .header-with-gauges {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    background-image: url({headerImage});
-    background-size: cover;
-    background-position: center;
-  }
-
-  .gauges-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
-  }
-</style>
