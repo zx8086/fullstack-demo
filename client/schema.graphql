@@ -31,6 +31,10 @@ type Look {
   trend: String
 }
 
+type LookCounts {
+  totalCount: Int
+}
+
 type MerchandisingHierarchy {
   business: String
   category: String
@@ -158,6 +162,7 @@ type PimDeliveryDates {
 }
 
 type Query {
+  lookCounts(divisionCode: String): LookCounts
   looks: [Look]
   looksByDivisionCode(divisionCode: String!): [Look]
   optionCounts(divisionCode: String!, salesChannels: [String!]): OptionCounts

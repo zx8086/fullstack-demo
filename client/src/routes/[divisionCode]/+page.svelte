@@ -11,19 +11,17 @@
 
   console.log("Passed data through prop", data);
 
-  $: isSoldOutCount = data.data.isSoldOutCount;
-  $: isAvailableCount = data.data.isAvailableCount;
-  $: isCancelledCount = data.data.isCancelledCount;
-  $: isNewCount = data.data.isNewCount;
-  $: isUpdatedCount = data. data.isUpdatedCount;
-  $: totalCount = data.data.totalCount;
+  $: optionCountsData = data?.data?.optionCountsData;
+  $: lookCountsData = data?.data?.lookCountsData;
 
-// isAvailableCount
-// isUpdatedCount
-// isCancelledCount
-// isNewCount
-// isSoldOutCount
-// totalCount
+  $: isSoldOutCount = optionCountsData?.isSoldOutCount;
+  $: isAvailableCount = optionCountsData?.isAvailableCount;
+  $: isCancelledCount = optionCountsData?.isCancelledCount;
+  $: isNewCount = optionCountsData?.isNewCount;
+  $: isUpdatedCount = optionCountsData?.isUpdatedCount;
+  $: totalCount = optionCountsData?.totalCount;
+
+  $: lookTotalCount = lookCountsData?.totalCount;
 
   let menuList = [];
   menuListStore.subscribe(value => {
@@ -107,7 +105,7 @@
           <h2 class="heading-th p-4">{divisionName} LOOKS</h2>
           <div class="p-4">
             <p class="font-bold">LOOKS</p>
-            <p>{isUpdatedCount} OF {totalCount} COMPLETE</p>
+            <p>{isUpdatedCount} OF {lookTotalCount} COMPLETE</p>
             <!-- <DataFetcher {divisionCode} {salesChannels} /> -->
             <p><ProgressBar percentage={isUpdatedCount / totalCount * 100} completed={isUpdatedCount} total={totalCount} /></p>
             <p><ProgressBar percentage={isUpdatedCount / totalCount * 100} completed={isUpdatedCount} total={totalCount} /></p>
@@ -116,6 +114,16 @@
                 VIEW DETAILED REPORT
               </a>
             </div>
+          </div>
+        </div>
+        <div class="card-th mb-4">
+          <div class="p-4">
+            <p class="font-bold">AVAILABLE LOOKS: {lookTotalCount} </p>
+          </div>
+        </div>
+        <div class="card-th mb-4">
+          <div class="p-4">
+            <p class="font-bold">CANCELED: {isAvailableCount} </p>
           </div>
         </div>
       </div>

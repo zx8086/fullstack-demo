@@ -6,11 +6,9 @@ export async function load({ params }) {
   const divisionCode = params.divisionCode;
   const salesChannels = ['SELLIN'];
 
-  const query = `
+  const optionCountsQuery = `
     query getOptionCounts {
-      optionCounts(divisionCode: "${divisionCode}", salesChannels: ${JSON.stringify(
-        salesChannels
-      )}) {
+      optionCounts(divisionCode: "${divisionCode}", salesChannels: ${JSON.stringify(salesChannels)}) {
         isAvailableCount
         isUpdatedCount
         isCancelledCount
@@ -21,13 +19,32 @@ export async function load({ params }) {
     }
   `;
 
-  try {
-    const res = await fetchGraphQLData(query);
-    const data = res.data.optionCounts;
-    console.log(`Division:- ${divisionCode}`,data);
+  const lookCountsQuery = `
+    query getLookCounts {
+      lookCounts(divisionCode: "${divisionCode}") {
+        totalCount
+      }
+    }
+  `;
 
-    return { 
-        data 
+  try {
+    // Execute both queries in parallel
+    const [optionCountsRes, lookCountsRes] = await Promise.all([
+      fetchGraphQLData(optionCountsQuery),
+      fetchGraphQLData(lookCountsQuery),
+    ]);
+
+    const optionCountsData = optionCountsRes.data.optionCounts;
+    const lookCountsData = lookCountsRes.data.lookCounts;
+
+    console.log(`Division Options Count:- ${divisionCode}`, optionCountsData);
+    console.log(`Division Looks Count :- ${divisionCode}`, lookCountsData);
+
+    return {
+      data: {
+        optionCountsData,
+        lookCountsData,
+      },
     };
   } catch (error) {
     console.error('Error loading GraphQL data:', error);
