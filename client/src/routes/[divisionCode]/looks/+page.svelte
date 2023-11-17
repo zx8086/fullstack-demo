@@ -5,6 +5,14 @@
 
     console.log("Passed data through prop", data);
 
+    // You can define a function to handle the error
+    function handleImageError(event) {
+        event.target.src = '/img/not-found.png';
+        // Prevents the fallback image from triggering an infinite loop if it's also missing
+        event.target.onerror = null;
+    }
+
+
     // Use a reactive statement to update the displayed data when `data` changes
     $: looksData = data.data || [];
 
@@ -18,7 +26,7 @@
             {#each looksData as look}
                 <div class="group relative">
                     <div class="card-th  aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                        <img src={look.assetUrl} alt={look.title} class="h-full w-full object-cover object-center lg:h-full lg:w-full"onerror="this.onerror=null;this.src='/img/not-found.png';">
+                        <img src={look.assetUrl} alt={look.title} class="h-full w-full object-cover object-center lg:h-full lg:w-full" on:error={handleImageError}>
                     </div>
                     <div class="mt-4 flex justify-between">
                         <div>
