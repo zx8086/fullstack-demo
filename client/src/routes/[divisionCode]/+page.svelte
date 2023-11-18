@@ -22,6 +22,7 @@
   $: totalCount = optionCountsData?.totalCount;
 
   $: lookTotalCount = lookCountsData?.totalCount;
+  $: incompleteLookCount = lookCountsData?.incompleteCount;
 
   let menuList = [];
   menuListStore.subscribe(value => {
@@ -107,8 +108,8 @@
             <p class="font-bold">LOOKS</p>
             <p>{isUpdatedCount} OF {lookTotalCount} COMPLETE</p>
             <!-- <DataFetcher {divisionCode} {salesChannels} /> -->
-            <p><ProgressBar percentage={isUpdatedCount / totalCount * 100} completed={isUpdatedCount} total={totalCount} /></p>
-            <p><ProgressBar percentage={isUpdatedCount / totalCount * 100} completed={isUpdatedCount} total={totalCount} /></p>
+            <p><ProgressBar percentage={incompleteLookCount / lookTotalCount * 100} completed={lookTotalCount - incompleteLookCount} total={lookTotalCount} /></p>
+            <p><ProgressBar percentage={lookTotalCount / incompleteLookCount * 100} completed={lookTotalCount - incompleteLookCount} total={lookTotalCount} /></p>
             <div class="flex justify-center mt-4">
               <a href={`/${divisionId}/looks`} class="btn-th-detailed-report">
                 VIEW DETAILED REPORT
@@ -123,7 +124,7 @@
         </div>
         <div class="card-th mb-4">
           <div class="p-4">
-            <p class="font-bold">CANCELED: {isAvailableCount} </p>
+            <p class="font-bold">PARTIALLY COMPLETED LOOKS: {incompleteLookCount} </p>
           </div>
         </div>
       </div>

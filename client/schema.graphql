@@ -32,6 +32,7 @@ type Look {
 }
 
 type LookCounts {
+  incompleteCount: Int
   totalCount: Int
 }
 

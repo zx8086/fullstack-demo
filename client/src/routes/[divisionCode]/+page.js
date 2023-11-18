@@ -23,6 +23,7 @@ export async function load({ params }) {
     query getLookCounts {
       lookCounts(divisionCode: "${divisionCode}") {
         totalCount
+        incompleteCount
       }
     }
   `;
