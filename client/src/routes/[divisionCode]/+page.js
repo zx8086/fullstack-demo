@@ -18,7 +18,7 @@ export async function load({ params }) {
       }
     }
   `;
-
+  
   const lookCountsQuery = `
     query getLookCounts {
       lookCounts(divisionCode: "${divisionCode}") {

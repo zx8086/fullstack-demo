@@ -42,6 +42,6 @@
 </script>
 
 <Sidebar lists={$menuListStore} {siteName} {headerClass} {asideClass} {navClass}/>
-<main class="container mx-auto pt-0 ${themeClass}">
+<main class="container mx-auto p-6 ${themeClass}">
     <slot></slot>
 </main>

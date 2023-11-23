@@ -48,7 +48,7 @@
 {#if currentDivision}
   <div class="container ml-20 mx-auto p-0 {themeClass}">
       <div>
-        <img src={headerImage} class="h-60 w-full rounded-lg mb-5 shadow-x object-cover object-topl" alt="Division Header"/>
+        <img src={headerImage} class="h-60 w-full rounded-lg mb-5 shadow-x object-top" alt="Division Header"/>
       </div>
     <div class="flex flex-row justify-center space-x-4">
       <div class="w-1/2">
